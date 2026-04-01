@@ -1,8 +1,9 @@
 // Copyright (c) 2026, Parthasarathi and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Evaluation", {
+frappe.ui.form.on("Fee Payment", {
 	refresh(frm) {
+		frm.toggle_reqd("student", true);
 		frappe.call({
 			method: "campusflow.api.get_cached_org_type",
 			callback: function (r) {
@@ -20,5 +21,33 @@ frappe.ui.form.on("Evaluation", {
 				}
 			},
 		});
+
+		frm.set_query("student", function () {
+			return {
+				filters: {
+					organization_type: frm.doc.organization_type,
+				},
+			};
+		});
+
+		frm.set_query("fee_structure", function () {
+			return {
+				filters: {
+					organization_type: frm.doc.organization_type,
+					program: frm.doc.program,
+					year: frm.doc.year,
+					student_class: frm.doc.student_class,
+				},
+			};
+		});
+	},
+	student(frm) {
+		if (frm.doc.student) {
+			frappe.db
+				.get_value("Student", { name: frm.doc.student }, "fees_balance")
+				.then((value) => {
+					frm.set_value("your_balance", value.message.fees_balance);
+				});
+		}
 	},
 });

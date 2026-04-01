@@ -3,21 +3,22 @@
 
 frappe.ui.form.on("Fee Structure", {
 	refresh(frm) {
-		let org_type = frappe.cache().get_value("org_type");
-		if (!org_type) {
-			frappe.db
-				.get_single_value("CampusFlow Settings", "organization_type")
-				.then((value) => {
-					org_type = value;
-					frm.organization_type = org_type;
-				});
-		}
-
-		if (org_type == "School") {
-			frm.set_df_property("program", "hidden", 1);
-			frm.set_df_property("year", "hidden", 1);
-		} else {
-			frm.set_df_property("class", "hidden", 1);
-		}
+		frappe.call({
+			method: "campusflow.api.get_cached_org_type",
+			callback: function (r) {
+				if (r.message) {
+					frm.doc.organization_type = r.message;
+				}
+				if (frm.doc.organization_type == "School") {
+					frm.set_df_property("program", "hidden", 1);
+					frm.set_df_property("year", "hidden", 1);
+					frm.toggle_reqd("student_class", 1);
+				} else if (frm.doc.organization_type == "College") {
+					frm.set_df_property("student_class", "hidden", 1);
+					frm.toggle_reqd("program", 1);
+					frm.toggle_reqd("year", 1);
+				}
+			},
+		});
 	},
 });

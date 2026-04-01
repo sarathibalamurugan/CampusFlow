@@ -132,34 +132,36 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Fee Payment": {
+		"on_submit": ["campusflow.api.set_student_fees_balance", "campusflow.api.enqueue_fee_receipt_email"]
+	},
+	"Evaluation": {"on_submit": "campusflow.api.enqueue_evaluation_result_email"},
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# }
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"campusflow.tasks.all"
-# 	],
-# 	"daily": [
-# 		"campusflow.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"campusflow.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"campusflow.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"campusflow.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"campusflow.tasks.all"
+	# ],
+	"daily": ["campusflow.api.enqueue_fee_remider_email"],
+	# "hourly": [
+	# 	"campusflow.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"campusflow.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"campusflow.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------
@@ -249,4 +251,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

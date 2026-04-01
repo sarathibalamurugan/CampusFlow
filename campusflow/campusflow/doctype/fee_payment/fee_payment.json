@@ -1,25 +1,26 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-03-26 17:11:53.338699",
+ "creation": "2026-03-26 17:10:43.139506",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_bjyl",
+  "section_break_xgzk",
   "amended_from",
-  "organization_type",
+  "date",
   "student",
   "student_class",
   "program",
   "year",
-  "exam_type",
-  "course",
-  "max_marks",
-  "obtained_marks"
+  "fee_structure",
+  "amount",
+  "your_balance",
+  "paid_amount",
+  "balance_amount"
  ],
  "fields": [
   {
-   "fieldname": "section_break_bjyl",
+   "fieldname": "section_break_xgzk",
    "fieldtype": "Section Break"
   },
   {
@@ -27,7 +28,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Evaluation",
+   "options": "Fee Payment",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -35,7 +36,6 @@
   {
    "fieldname": "student",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Student",
    "options": "Student",
    "reqd": 1
@@ -48,63 +48,64 @@
    "options": "Class"
   },
   {
-   "fetch_from": "student.program",
    "fieldname": "program",
    "fieldtype": "Link",
    "label": "Program",
    "options": "Programs"
   },
   {
-   "fetch_from": "student.year",
    "fieldname": "year",
    "fieldtype": "Data",
    "label": "Year"
   },
   {
-   "fieldname": "exam_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Exam Type",
-   "options": "UnitTest\nFinal\nSemester",
-   "reqd": 1
-  },
-  {
-   "fieldname": "course",
+   "fieldname": "fee_structure",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Course",
-   "options": "Course",
+   "label": "Fee Structure",
+   "options": "Fee Structure"
+  },
+  {
+   "fetch_from": "fee_structure.total_amount",
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "label": "Amount",
+   "mask": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Float",
+   "label": "Paid Amount",
+   "non_negative": 1,
    "reqd": 1
   },
   {
-   "default": "100",
-   "fieldname": "max_marks",
+   "fieldname": "balance_amount",
    "fieldtype": "Float",
-   "label": "Max Marks"
+   "label": "Balance Amount",
+   "read_only": 1
   },
   {
-   "default": "0",
-   "fieldname": "obtained_marks",
+   "fieldname": "your_balance",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Obtained Marks",
+   "label": "Your Balance",
    "reqd": 1
   },
   {
-   "fetch_from": "student.organization_type",
-   "fieldname": "organization_type",
-   "fieldtype": "Data",
-   "label": "Organization Type"
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-01 00:13:09.247190",
+ "modified": "2026-04-01 11:09:14.657010",
  "modified_by": "Administrator",
  "module": "Campusflow",
- "name": "Evaluation",
+ "name": "Fee Payment",
  "owner": "Administrator",
  "permissions": [
   {

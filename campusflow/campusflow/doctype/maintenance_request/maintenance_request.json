@@ -6,7 +6,12 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_drfa",
-  "amended_from"
+  "amended_from",
+  "asset_name",
+  "issue",
+  "reported_by",
+  "status",
+  "date"
  ],
  "fields": [
   {
@@ -22,13 +27,41 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Link",
+   "label": "Asset Name",
+   "options": "Campus Asset"
+  },
+  {
+   "fieldname": "issue",
+   "fieldtype": "Small Text",
+   "label": "Issue"
+  },
+  {
+   "fieldname": "reported_by",
+   "fieldtype": "Link",
+   "label": "Reported By",
+   "options": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nClosed"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-30 11:25:00.896493",
+ "modified": "2026-03-31 15:37:40.705248",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Maintenance Request",
@@ -45,6 +78,30 @@
    "role": "System Manager",
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Staff",
+   "share": 1,
    "write": 1
   }
  ],

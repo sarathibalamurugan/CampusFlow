@@ -8,6 +8,7 @@
   "section_break_hr2q",
   "amended_from",
   "student_name",
+  "gender",
   "date_of_birth",
   "parent_name",
   "phone",
@@ -59,13 +60,19 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Draft\nApproved\nRejected"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-30 12:46:51.904803",
+ "modified": "2026-04-01 11:28:07.801068",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Admission Application",

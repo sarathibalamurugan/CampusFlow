@@ -11,7 +11,7 @@
   "first_name",
   "second_name",
   "full_name",
-  "class",
+  "student_class",
   "program",
   "year",
   "date_of_birth",
@@ -24,7 +24,8 @@
   "parent_phone",
   "address",
   "admission_date",
-  "status"
+  "status",
+  "fees_balance"
  ],
  "fields": [
   {
@@ -108,12 +109,6 @@
    "options": "Active\nInactive"
   },
   {
-   "fieldname": "class",
-   "fieldtype": "Link",
-   "label": "Class",
-   "options": "Class"
-  },
-  {
    "fieldname": "program",
    "fieldtype": "Link",
    "label": "Program",
@@ -128,12 +123,23 @@
    "fieldname": "parent_name",
    "fieldtype": "Data",
    "label": "Parent Name"
+  },
+  {
+   "fieldname": "fees_balance",
+   "fieldtype": "Float",
+   "label": "Fees Balance"
+  },
+  {
+   "fieldname": "student_class",
+   "fieldtype": "Link",
+   "label": "Class",
+   "options": "Class"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-30 13:14:06.665963",
+ "modified": "2026-03-31 16:24:39.552467",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Student",
@@ -151,6 +157,38 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Staff",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Parent",
+   "share": 1
   }
  ],
  "row_format": "Dynamic",

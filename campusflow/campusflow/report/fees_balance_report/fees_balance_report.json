@@ -1,0 +1,47 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-04-01 11:16:47.425493",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "student_class",
+   "fieldtype": "Link",
+   "label": "Class",
+   "mandatory": 1,
+   "options": "Class",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-04-01 17:04:58.171543",
+ "modified_by": "Administrator",
+ "module": "Campusflow",
+ "name": "Fees Balance Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT s.name,s.student_class, s.fees_balance FROM `tabStudent` as s WHERE (s.student_class = %(student_class)s);",
+ "ref_doctype": "Student",
+ "report_name": "Fees Balance Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "CF Manager"
+  },
+  {
+   "role": "CF Staff"
+  },
+  {
+   "role": "CF Parent"
+  }
+ ],
+ "timeout": 0
+}

@@ -1,17 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:class",
+ "autoname": "field:student_class",
  "creation": "2026-03-30 12:20:08.124928",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "class"
+  "student_class"
  ],
  "fields": [
   {
-   "fieldname": "class",
+   "fieldname": "student_class",
    "fieldtype": "Data",
    "label": "Class",
    "unique": 1
@@ -20,7 +20,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-30 12:21:33.965600",
+ "modified": "2026-03-31 12:15:03.761126",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Class",
