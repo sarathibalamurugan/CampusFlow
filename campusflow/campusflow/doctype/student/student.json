@@ -139,7 +139,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-31 16:24:39.552467",
+ "modified": "2026-04-02 16:29:16.384955",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Student",
@@ -188,6 +188,15 @@
    "read": 1,
    "report": 1,
    "role": "CF Parent",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "CF Student",
    "share": 1
   }
  ],

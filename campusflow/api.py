@@ -9,8 +9,19 @@ def get_cached_org_type():
 	return frappe.cache.get_value("org_type")
 
 
+@frappe.whitelist()
+def check_permission():
+	if not frappe.has_permission("Fee Payment", "write"):
+		frappe.throw("You are not allowed to this payment")
+
+	return
+
+
 def set_student_fees_balance(doc, method):
 	if method == "on_submit":
+		if frappe.db.get_value("Student", doc.student, "fees_balance") - doc.paid_amount < 0:
+			frappe.throw("Payment exceeds the outstanding balance.")
+
 		frappe.db.set_value(
 			"Student",
 			doc.student,
@@ -68,3 +79,19 @@ def send_fee_receipt_email(doc):
 		subject = "Your fee payment receipt"
 		message = f"Dear {doc.student},\n\nThank you for your payment of {doc.paid_amount} towards your fees. Please find the attached receipt for your reference.\n\nBest regards,\nCampusFlow Team"
 		frappe.sendmail(recipients=email, subject=subject, message=message, attachments=attachments, now=True)
+
+
+def create_student_from_application(doc, method):
+	if doc.status == "Approved":
+		student = frappe.get_doc(
+			{
+				"doctype": "Student",
+				"first_name": doc.student_name,
+				"student_class": doc.class_applied,
+				"gender": doc.gender,
+				"date_of_birth": doc.date_of_birth,
+				"parent_name": doc.parent_name,
+				"parent_phone": doc.phone,
+			}
+		).insert(ignore_permissions=True)
+		frappe.msgprint(f"Student {student.name} created successfully from application {doc.name}.")

@@ -40,6 +40,7 @@
   {
    "fieldname": "type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Type",
    "options": "Issue\nReturn"
   },
@@ -72,7 +73,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-01 18:05:17.494280",
+ "modified": "2026-04-02 11:33:03.639339",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Library Transaction",

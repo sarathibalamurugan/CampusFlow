@@ -137,6 +137,7 @@ doc_events = {
 		"on_submit": ["campusflow.api.set_student_fees_balance", "campusflow.api.enqueue_fee_receipt_email"]
 	},
 	"Evaluation": {"on_submit": "campusflow.api.enqueue_evaluation_result_email"},
+	"Admission Application": {"on_submit": "campusflow.api.create_student_from_application"},
 	# "*": {
 	# 	"on_update": "method",
 	# 	"on_cancel": "method",

@@ -40,6 +40,9 @@ frappe.ui.form.on("Student", {
 			});
 		});
 		frm.add_custom_button(__("Check and Pay Fee"), function () {
+			frappe.call({
+				method: "campusflow.api.check_permission",
+			});
 			frappe.new_doc("Fee Payment", {
 				student: frm.doc.name,
 				student_name: frm.doc.student_name,
