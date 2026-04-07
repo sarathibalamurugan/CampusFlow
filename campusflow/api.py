@@ -62,7 +62,9 @@ def send_fee_reminder_email(doc):
 
 @frappe.whitelist()
 def get_student_count():
-	return frappe.db.count("Student", filters={"organization_type": get_cached_org_type()})
+	return frappe.db.count(
+		"Student", filters={"organization_type": get_cached_org_type(), "status": "Active"}
+	)
 
 
 def enqueue_fee_receipt_email(doc, method):
@@ -92,6 +94,7 @@ def create_student_from_application(doc, method):
 				"date_of_birth": doc.date_of_birth,
 				"parent_name": doc.parent_name,
 				"parent_phone": doc.phone,
+				"email": doc.email,
 			}
 		).insert(ignore_permissions=True)
 		frappe.msgprint(f"Student {student.name} created successfully from application {doc.name}.")

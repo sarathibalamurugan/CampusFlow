@@ -13,6 +13,7 @@
   "program",
   "year",
   "fee_structure",
+  "payment_type",
   "amount",
   "your_balance",
   "paid_amount",
@@ -45,7 +46,8 @@
    "fieldname": "student_class",
    "fieldtype": "Link",
    "label": "Class",
-   "options": "Class"
+   "options": "Class",
+   "read_only": 1
   },
   {
    "fieldname": "program",
@@ -96,13 +98,20 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "options": "Cash\nBank\nCard",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-02 16:34:36.526837",
+ "modified": "2026-04-07 12:18:53.577453",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Fee Payment",
@@ -131,6 +140,7 @@
    "report": 1,
    "role": "CF Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {

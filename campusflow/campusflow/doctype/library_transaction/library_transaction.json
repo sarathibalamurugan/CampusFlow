@@ -12,7 +12,8 @@
   "book_name",
   "date",
   "due_date",
-  "returned"
+  "returned",
+  "returned_against"
  ],
  "fields": [
   {
@@ -67,13 +68,20 @@
    "fieldtype": "Data",
    "label": "Book Name",
    "reqd": 1
+  },
+  {
+   "depends_on": "returned",
+   "fieldname": "returned_against",
+   "fieldtype": "Link",
+   "label": "Returned Against",
+   "options": "Library Transaction"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-02 11:33:03.639339",
+ "modified": "2026-04-07 12:26:43.835867",
  "modified_by": "Administrator",
  "module": "Campusflow",
  "name": "Library Transaction",

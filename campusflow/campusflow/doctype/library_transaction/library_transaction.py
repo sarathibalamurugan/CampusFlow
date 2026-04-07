@@ -15,6 +15,7 @@ class LibraryTransaction(Document):
 			return_transaction.returned = 1
 			return_transaction.due_date = self.due_date
 			return_transaction.date = frappe.utils.today()
+			return_transaction.returned_against = self.name
 			return_transaction.insert()
 			return_transaction.submit()
 			frappe.msgprint("Book returned successfully!")

@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import get_link_to_form
 
 
 class Student(Document):
@@ -25,9 +26,22 @@ class Student(Document):
 		else:
 			self.fees_balance = frappe.db.get_value("Fee Structure", fee_structure, "total_amount")
 
+	def after_insert(self):
+		frappe.enqueue(self.send_fill_details_email)
+
 	def before_save(self):
 		self.student_id = self.name
 		self.full_name = (self.first_name or "") + " " + (self.second_name or "")
+
+	def send_fill_details_email(self):
+		if self.email:
+			frappe.sendmail(
+				recipients=self.email,
+				subject=_("Your Student ID is created."),
+				message=_("Your Student ID {0} is created. Please fill Further Details").format(
+					get_link_to_form("Student", self.name)
+				),
+			)
 
 
 @frappe.whitelist()
@@ -35,7 +49,11 @@ def mark_attendance(student, status, student_class=None, program=None, year=None
 	exist = frappe.db.exists("Attendance", {"student": student, "date": frappe.utils.today()})
 
 	if exist:
-		frappe.throw("Attendance for this student has already been marked today.")
+		frappe.throw(
+			_("Attendance {0} for this student has already been marked today.").format(
+				get_link_to_form("Attendance", exist)
+			)
+		)
 	else:
 		frappe.get_doc(
 			{
